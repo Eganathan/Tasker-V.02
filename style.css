@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap');
+
+a{
+	text-decoration: none;
+}
+
+.container{
+	
+	padding:2%;
+	margin:0 auto;
+	background-color:#eaeffc;
+	border-right: 2px solid #daa520;
+	border-radius: 5px;
+	margin-bottom: 50px;
+}
+
+
+.card{
+	margin-top:1%;
+}
+
+.card-sub-text{
+	font-style: italic;
+}
+
+.list-grp-edit{
+	margin-bottom: 5px;
+}
+
+.lg-li-btnDiv{
+	display:inline-block;
+}
+
+#task-Input{
+	font-size: 1.5em;
+	font-weight: bolder;
+	font-family: 'Zen Kurenaido', sans-serif;
+}
+
+.top-navbar{
+	background-color:#eaeffc;
+	color:white;
+}
+
+.logo{
+	background-color: #07112f;
+	font-size: 1.2em;
+	color:#daa520;
+	border-radius:5px;
+	padding:5px;
+}
+
+.task-text-item{
+	font-size: 1.3em;
+	font-family: 'Ubuntu', sans-serif;
+	color:#07112f;
+	overflow: ellipsis;
+}
+
+#login-container{
+	background-color: #07112f;
+}
+
+

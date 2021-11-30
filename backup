@@ -1,0 +1,95 @@
+<?php include 'nav.php'; ?>
+
+<div class="container">
+          <form method="POST">
+
+        <div class="input-group input-group-lg">
+
+          <input type="text" id="task-Input" value="" name="task_inp" class="form-control" placeholder="Type something here .." minlength="8" maxlength="122">
+
+          <div class="input-group-append">
+            <input class="btn btn btn-success"  name="submit" type="submit" value="+" />
+          </div>
+        </div>
+
+
+
+        <div class="card">
+          <div class="card-body">
+
+            <div class="card">
+              
+                <table class="table table-hover">
+                  <tbody>
+
+                      <?php 
+                        $sql = "SELECT * FROM tasks WHERE user_id = '$curr_user_id' ";
+                          $result = $conn->query($sql);
+
+                          if($result == TRUE){
+                            $counts = mysqli_num_rows($result);
+                            
+
+                              if($counts > 0){
+                                  while($row = $result->fetch_assoc()){
+                                    $task = $row["task_text"];
+                                    $t_id = $row["task_id"];
+
+                                    ?>  <tr class="list-item-tr">
+                                          <th scope="row"></th>
+                                          <td class="col-9"><span class="task-text-item"><?php echo($task);?></span></td>
+                                          <td class="col-3 text-right"> 
+                                                <a><button type="button" class="btn btn-primary">Update</button></a>
+                                                <a href="del-task.php?id=<?php echo $t_id?> ">
+                                                  <button type="button" class="btn btn-danger">Del</button>
+                                                </a>
+                                            </td> 
+                                        </tr> 
+                                    <?php
+
+                                }} }
+                      ?>
+                    
+                  </tbody>
+                </table>
+
+            </div>
+
+            <!--
+                <h5 class="card-title">Card title</h5>
+                <h6 class="card-subtitle mb-2 text-muted card-sub-text">Some quick example text to build on the card title and make up the bulk of the card's content.</h6>
+              -->
+
+          </div>
+        </div>
+      
+      </form>
+</div>
+
+<?php include 'footer.php';?>
+
+<?php 
+
+//1. Get input from the user to processing the data
+ $curr_task_input_value="";
+        
+
+  //process the value from the form and save it on DB
+  //check if the submit button is clicked
+if (isset($_POST['submit'])) {
+
+    //checks if the input is not empty
+    if(!empty($_POST['task_inp'])){
+        
+        $curr_task_input_value = $_POST['task_inp'];
+        
+
+        //2. SQl query to save the data
+        $sql = "INSERT INTO tasks SET user_id = '$curr_user_id', task_text = '$curr_task_input_value' ";
+        //3. executing the SQL to insert the data
+        $result = $conn->query($sql);}
+        
+      }
+
+?>
+
